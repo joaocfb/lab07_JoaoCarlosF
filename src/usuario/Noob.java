@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import excecoes.StringInvalidaException;
 import excecoes.ValorInvalidoException;
+import jogo.Jogabilidade;
 import jogo.Jogo;
 
 public class Noob extends Usuario {
@@ -30,14 +31,59 @@ public class Noob extends Usuario {
 
 	}
 	
-	public int recompensar(String nomeJogo, int scoreObtido, boolean zerou) {
+	@Override
+	public void recompensar(String nomeJogo, int scoreObtido, boolean zerou) {
+		Jogo jogo = super.buscaJogo(nomeJogo);
+		int x2pparcial = jogo.registraJogada(scoreObtido, zerou);
+		
+		if (jogo.getJogabilidade().contains(Jogabilidade.OFFLINE)
+				&& jogo.getJogabilidade().contains(Jogabilidade.MULTIPLAYER)) {
+			
+			super.setXp2(getXp2() + 40 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.OFFLINE)) {
+			
+			super.setXp2(getXp2() + 30 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.MULTIPLAYER)) {
+			
+			super.setXp2(getXp2() + 10 + x2pparcial);
+		}
 		
 	}
 	
-	public int punir(String nomeJogo, int scoreObtido, boolean zerou) {
-		
-	}
+	@Override
+	public void punir(String nomeJogo, int scoreObtido, boolean zerou) {
+		Jogo jogo = super.buscaJogo(nomeJogo);
+		int x2pparcial = jogo.registraJogada(scoreObtido, zerou);
+		if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)
+				&& jogo.getJogabilidade().contains(Jogabilidade.COMPETITIVO)
+				&& jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
+			
+			super.setXp2(getXp2() - 80 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)
+				&& jogo.getJogabilidade().contains(Jogabilidade.COMPETITIVO)) {
+			
+			super.setXp2(getXp2() - 30 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)
+				&& jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
+			
+			super.setXp2(getXp2() - 60 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.COMPETITIVO)
+				&& jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
+			
+			super.setXp2(getXp2() - 70 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)) {
+			
+			super.setXp2(getXp2() -10 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.COMPETITIVO)) {
+			
+			super.setXp2(getXp2() -20 + x2pparcial);
+		} else if (jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
+			
+			super.setXp2(getXp2() - 50 + x2pparcial);
+		}
 
+	}
+	
 	@Override
 	public String toString() {
 		String myString = "Jogador Noob: " + this.getLogin() + FIM_DE_LINHA;
@@ -50,7 +96,7 @@ public class Noob extends Usuario {
 			myString += j.toString();
 		}
 		myString += FIM_DE_LINHA;
-		myString += "Total de preço dos jogos: R$ " + this.calculaPrecoTotal() + FIM_DE_LINHA;
+		myString += "Total de preï¿½o dos jogos: R$ " + this.calculaPrecoTotal() + FIM_DE_LINHA;
 		myString += "--------------------------------------------";
 		return myString;
 	}

@@ -57,14 +57,24 @@ public class LojaController {
 		}
 	}
 
-	public void registraJogada(String login, String nomeJogo, int score, boolean venceu) {
+	public void recompensar(String login, String nomeJogo, int score, boolean venceu) {
 		try {
 			Usuario usr = this.buscaUsuario(login);
-			usr.registradaJogada(nomeJogo, score, venceu);
+			usr.recompensar(nomeJogo, score, venceu);
 		} catch (Exception e) {
 			e.getMessage();
 		}
 
+	}
+	
+	public void punir(String login, String nomeJogo, int score, boolean venceu) {
+		try {
+			Usuario usr = this.buscaUsuario(login);
+			usr.punir(nomeJogo, score, venceu);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
 	}
 
 	public void adicionaCredito(String login, double credito) {

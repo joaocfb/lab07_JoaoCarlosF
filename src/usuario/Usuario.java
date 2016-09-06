@@ -78,28 +78,11 @@ public abstract class Usuario {
 	public double getCredito() {
 		return this.credito;
 	}
-	/**
-	 * Metodo que chama o metodo registraJogada de Jogo
-	 * @param nomeJogo
-	 * @param score
-	 * @param venceu
-	 * @throws Exception
-	 */
-	public void registradaJogada(String nomeJogo, int score, boolean venceu) throws Exception {
-		Jogo jogo = this.buscaJogo(nomeJogo);
-		if (jogo == null) {
-			throw new Exception();
-		}
-		setXp2(getXp2() + jogo.registraJogada(score, venceu));
-	}
 	
-	public int recompensar(String nomeJogo, int scoreObtido, boolean zerou) {
-		
-	}
+	public abstract void recompensar(String nomeJogo, int scoreObtido, boolean zerou) throws Exception;
 	
-	public int punir(String nomeJogo, int scoreObtido, boolean zerou) {
-		
-	}
+	public abstract void punir(String nomeJogo, int scoreObtido, boolean zerou);
+	
 	/**
 	 * Metodo que procura um jogo na lista de Jogos
 	 * @param nomeJogo

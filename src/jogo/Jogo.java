@@ -103,6 +103,11 @@ public abstract class Jogo {
 	public void setVezesJogadas(int novaQuantidade) {
 		this.vezesJogadas = novaQuantidade;
 	}
+	
+	public Set<Jogabilidade> getJogabilidade() {
+		return this.jogabilidades;
+	}
+	
 	/**
 	 * Override do toString de Java
 	 */
