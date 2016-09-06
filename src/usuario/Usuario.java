@@ -81,7 +81,7 @@ public abstract class Usuario {
 	
 	public abstract void recompensar(String nomeJogo, int scoreObtido, boolean zerou) throws Exception;
 	
-	public abstract void punir(String nomeJogo, int scoreObtido, boolean zerou);
+	public abstract void punir(String nomeJogo, int scoreObtido, boolean zerou) throws Exception;
 	
 	/**
 	 * Metodo que procura um jogo na lista de Jogos

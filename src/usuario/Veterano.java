@@ -31,8 +31,11 @@ public class Veterano extends Usuario {
 	}
 
 	@Override
-	public void recompensar(String nomeJogo, int scoreObtido, boolean zerou) {
+	public void recompensar(String nomeJogo, int scoreObtido, boolean zerou) throws Exception {
 		Jogo jogo = super.buscaJogo(nomeJogo);
+		if (jogo == null) {
+			throw new Exception();
+		}
 		int x2pparcial = jogo.registraJogada(scoreObtido, zerou);
 		if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)
 				&& jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
@@ -49,8 +52,11 @@ public class Veterano extends Usuario {
 	}
 	
 	@Override
-	public void punir(String nomeJogo, int scoreObtido, boolean zerou) {
+	public void punir(String nomeJogo, int scoreObtido, boolean zerou) throws Exception {
 		Jogo jogo = super.buscaJogo(nomeJogo);
+		if (jogo == null) {
+			throw new Exception();
+		}
 		int x2pparcial = jogo.registraJogada(scoreObtido, zerou);
 		if (jogo.getJogabilidade().contains(Jogabilidade.COMPETITIVO)
 				&& jogo.getJogabilidade().contains(Jogabilidade.OFFLINE)) {
