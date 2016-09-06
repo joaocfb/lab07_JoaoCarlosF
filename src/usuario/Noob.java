@@ -29,11 +29,19 @@ public class Noob extends Usuario {
 		}
 
 	}
+	
+	public int recompensar(String nomeJogo, int scoreObtido, boolean zerou) {
+		
+	}
+	
+	public int punir(String nomeJogo, int scoreObtido, boolean zerou) {
+		
+	}
 
 	@Override
 	public String toString() {
-		String myString = this.getLogin() + FIM_DE_LINHA;
-		myString += this.getNome() + " - Jogador Noob" + FIM_DE_LINHA;
+		String myString = "Jogador Noob: " + this.getLogin() + FIM_DE_LINHA;
+		myString += this.getNome() + " - " + this.getXp2() + " x2p" + FIM_DE_LINHA;
 		myString += "Lista de Jogos:" + FIM_DE_LINHA;
 
 		Iterator itr = getMeusJogos().iterator();
@@ -42,7 +50,7 @@ public class Noob extends Usuario {
 			myString += j.toString();
 		}
 		myString += FIM_DE_LINHA;
-		myString += "Total de preï¿½o dos jogos: R$ " + this.calculaPrecoTotal() + FIM_DE_LINHA;
+		myString += "Total de preço dos jogos: R$ " + this.calculaPrecoTotal() + FIM_DE_LINHA;
 		myString += "--------------------------------------------";
 		return myString;
 	}

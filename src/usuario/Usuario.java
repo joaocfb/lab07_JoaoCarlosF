@@ -92,6 +92,14 @@ public abstract class Usuario {
 		}
 		setXp2(getXp2() + jogo.registraJogada(score, venceu));
 	}
+	
+	public int recompensar(String nomeJogo, int scoreObtido, boolean zerou) {
+		
+	}
+	
+	public int punir(String nomeJogo, int scoreObtido, boolean zerou) {
+		
+	}
 	/**
 	 * Metodo que procura um jogo na lista de Jogos
 	 * @param nomeJogo
